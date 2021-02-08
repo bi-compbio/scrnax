@@ -1,0 +1,19 @@
+name: refineUTR
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - star=2.7.3a 
+  - samtools=1.9
+  - pigz=2.3.4 
+  - subread=1.6.4 
+  - lemon=1.3.1
+  - mawk=1.3.4
+  - r-base=3.6.2
+  - r-data.table=1.12.8
+  - r-matrix=1.2_18
+  - r-r.utils=2.9.2
+  - r-devtools=2.2.1
+  - r-rprojroot=1.3_2
+  - gffcompare=0.11.2
+  - bioconductor-dropletutils=1.6.1
