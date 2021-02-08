@@ -9,11 +9,9 @@ from snakemake.utils import read_job_properties
 import slurm_utils
 
 # cookiecutter arguments
-SBATCH_DEFAULTS = """ cluster=cpu"""
-CLUSTER_CONFIG = ""
-ADVANCED_ARGUMENT_CONVERSION = {"yes": True, "no": False}[
-    "no"
-]
+SBATCH_DEFAULTS = """partition=cpu"""
+CLUSTER_CONFIG = "slurm_defaults.yaml"
+ADVANCED_ARGUMENT_CONVERSION = {"yes": True, "no": False}["no"]
 
 RESOURCE_MAPPING = {
     "time": ("time", "runtime", "walltime"),

@@ -1,0 +1,260 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "outputDir": "results/selfTest/piplineOutput/",
+            "countBy": "combined",
+            "bamDir": "resources/tests/bams/",
+            "fastqDir": "resources/tests/fastqs/",
+            "goodGTF": "resources/tests/Homo_sapiens.GRCh38.95.chr17.gtf",
+            "refGTF": "resources/tests/Sus_scrofa.Sscrofa10.2.86.chr12.gtf",
+            "liftChain": "resources/tests/hg38ToSusScr3.over.chain",
+            "liftMinMatch": 0.7,
+            "_comment_": "featureCount",
+            "StarsoloGenome": "resources/tests/Sscrofa10.2.chr12_star2.7.1a",
+            "whitelist": "resources/tests/737K-august-2016.txt",
+            "CBLen": 16,
+            "UMIStart": 17,
+            "UMILen": 10,
+            "STARArgs": {},
+            "numHit": 10000,
+            "featureCountArgs": {},
+            "featureCountToDTArgs": {},
+            "DTToH5Args": {}
+        }
+    ],
+    "required": [
+        "outputDir",
+        "countBy",
+        "bamDir",
+        "fastqDir",
+        "goodGTF",
+        "refGTF",
+        "liftChain",
+        "liftMinMatch",
+        "_comment_",
+        "StarsoloGenome",
+        "whitelist",
+        "CBLen",
+        "UMIStart",
+        "UMILen",
+        "STARArgs",
+        "numHit",
+        "featureCountArgs",
+        "featureCountToDTArgs",
+        "DTToH5Args"
+    ],
+    "properties": {
+        "outputDir": {
+            "$id": "#/properties/outputDir",
+            "default": "",
+            "description": "output folder",
+            "examples": [
+                "results/selfTest/piplineOutput/"
+            ],
+            "title": "The outputDir schema",
+            "type": "string"
+        },
+        "countBy": {
+            "$id": "#/properties/countBy",
+            "default": "",
+            "description": "How the fastq files if they are provided shall be counted",
+            "enum": [
+                "origin",
+                "ortholog",
+                "denovo",
+                "combined"
+            ],
+            "examples": [
+                "combined"
+            ],
+            "title": "The countBy schema",
+            "uniqueItems": true,
+            "type": "string"
+        },
+        "bamDir": {
+            "$id": "#/properties/bamDir",
+            "default": "",
+            "description": "Bamfile folder for denovo assembling",
+            "examples": [
+                "resources/tests/bams/"
+            ],
+            "title": "The bamDir schema",
+            "type": "string"
+        },
+        "fastqDir": {
+            "$id": "#/properties/fastqDir",
+            "default": "",
+            "description": "Fastq files of scRNA-Seq libraries",
+            "examples": [
+                "resources/tests/fastqs/"
+            ],
+            "title": "The fastqDir schema",
+            "type": "string"
+        },
+        "goodGTF": {
+            "$id": "#/properties/goodGTF",
+            "type": "string",
+            "title": "The goodGTF schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "resources/tests/Homo_sapiens.GRCh38.95.chr17.gtf"
+            ]
+        },
+        "refGTF": {
+            "$id": "#/properties/refGTF",
+            "type": "string",
+            "title": "The refGTF schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "resources/tests/Sus_scrofa.Sscrofa10.2.86.chr12.gtf"
+            ]
+        },
+        "liftChain": {
+            "$id": "#/properties/liftChain",
+            "type": "string",
+            "title": "The liftChain schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "resources/tests/hg38ToSusScr3.over.chain"
+            ]
+        },
+        "liftMinMatch": {
+            "$id": "#/properties/liftMinMatch",
+            "type": "number",
+            "title": "The liftMinMatch schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0.0,
+            "examples": [
+                0.7
+            ]
+        },
+        "_comment_": {
+            "$id": "#/properties/_comment_",
+            "type": "string",
+            "title": "The _comment_ schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "featureCount"
+            ]
+        },
+        "StarsoloGenome": {
+            "$id": "#/properties/StarsoloGenome",
+            "type": "string",
+            "title": "The StarsoloGenome schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "resources/tests/Sscrofa10.2.chr12_star2.7.1a"
+            ]
+        },
+        "whitelist": {
+            "$id": "#/properties/whitelist",
+            "type": "string",
+            "title": "The whitelist schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "resources/tests/737K-august-2016.txt"
+            ]
+        },
+        "CBLen": {
+            "$id": "#/properties/CBLen",
+            "type": "integer",
+            "title": "The CBLen schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                16
+            ]
+        },
+        "UMIStart": {
+            "$id": "#/properties/UMIStart",
+            "type": "integer",
+            "title": "The UMIStart schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                17
+            ]
+        },
+        "UMILen": {
+            "$id": "#/properties/UMILen",
+            "type": "integer",
+            "title": "The UMILen schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                10
+            ]
+        },
+        "STARArgs": {
+            "$id": "#/properties/STARArgs",
+            "type": "object",
+            "title": "The STARArgs schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {}
+            ],
+            "required": [],
+            "additionalProperties": true
+        },
+        "numHit": {
+            "$id": "#/properties/numHit",
+            "type": "integer",
+            "title": "The numHit schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                10000
+            ]
+        },
+        "featureCountArgs": {
+            "$id": "#/properties/featureCountArgs",
+            "type": "object",
+            "title": "The featureCountArgs schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {}
+            ],
+            "required": [],
+            "additionalProperties": true
+        },
+        "featureCountToDTArgs": {
+            "$id": "#/properties/featureCountToDTArgs",
+            "type": "object",
+            "title": "The featureCountToDTArgs schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {}
+            ],
+            "required": [],
+            "additionalProperties": true
+        },
+        "DTToH5Args": {
+            "$id": "#/properties/DTToH5Args",
+            "type": "object",
+            "title": "The DTToH5Args schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {}
+            ],
+            "required": [],
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}
