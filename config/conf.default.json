@@ -1,0 +1,23 @@
+{
+  "outputDir": "piplineOutput/",
+  "countBy": "ortholog",
+  "goodGTF": "",
+  "refGTF": "",
+  "liftChain": "",
+  "liftMinMatch": 0.7,
+
+  "_comment_": "starsolo",
+  "StarsoloGenome": "",
+  "whitelist": "",
+  "CBLen": 16,
+  "UMIStart": 17,
+  "UMILen": 10,
+  "STARArgs": {},
+  
+  "_comment_": "featureCount",
+  "numHit": 10000,
+  "featureCountArgs": {},
+  "featureCountToDTArgs": {},
+  "DTToH5Args": {}
+
+}
