@@ -1,0 +1,4 @@
+__default__:
+  mail-user: yang_3.shen@boehringer-ingelheim.com
+  output   : logs/cluster/slurm.{rule}.{wildcards}.out
+  error   : logs/cluster/slurm.{rule}.{wildcards}.err
