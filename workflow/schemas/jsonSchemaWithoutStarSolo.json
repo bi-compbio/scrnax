@@ -1,0 +1,107 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "outputDir": "results/selfTest/piplineOutput/",
+            "countBy": "combined",
+            "bamDir": "resources/tests/bams/",
+            "goodGTF": "resources/tests/Homo_sapiens.GRCh38.95.chr17.gtf",
+            "refGTF": "resources/tests/Sus_scrofa.Sscrofa10.2.86.chr12.gtf",
+            "liftChain": "resources/tests/hg38ToSusScr3.over.chain",
+            "liftMinMatch": 0.7
+        }
+    ],
+    "required": [
+        "outputDir",
+        "countBy",
+        "bamDir",
+        "goodGTF",
+        "refGTF",
+        "liftChain",
+        "liftMinMatch"
+    ],
+    "properties": {
+        "outputDir": {
+            "$id": "#/properties/outputDir",
+            "type": "string",
+            "title": "The outputDir schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "results/selfTest/piplineOutput/"
+            ]
+        },
+        "countBy": {
+            "$id": "#/properties/countBy",
+            "default": "",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [
+                "combined"
+            ],
+            "title": "The countBy schema",
+            "enum": [
+                "origin",
+                "ortholog",
+                "denovo",
+                "combined"
+            ],
+            "type": "string"
+        },
+        "bamDir": {
+            "$id": "#/properties/bamDir",
+            "type": "string",
+            "title": "The bamDir schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "resources/tests/bams/"
+            ]
+        },
+        "goodGTF": {
+            "$id": "#/properties/goodGTF",
+            "type": "string",
+            "title": "The goodGTF schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "resources/tests/Homo_sapiens.GRCh38.95.chr17.gtf"
+            ]
+        },
+        "refGTF": {
+            "$id": "#/properties/refGTF",
+            "type": "string",
+            "title": "The refGTF schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "resources/tests/Sus_scrofa.Sscrofa10.2.86.chr12.gtf"
+            ]
+        },
+        "liftChain": {
+            "$id": "#/properties/liftChain",
+            "type": "string",
+            "title": "The liftChain schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "resources/tests/hg38ToSusScr3.over.chain"
+            ]
+        },
+        "liftMinMatch": {
+            "$id": "#/properties/liftMinMatch",
+            "type": "number",
+            "title": "The liftMinMatch schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0.0,
+            "examples": [
+                0.7
+            ]
+        }
+    },
+    "additionalProperties": true
+}
