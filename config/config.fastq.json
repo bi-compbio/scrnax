@@ -1,0 +1,15 @@
+{
+  "outputDir": "pigGTF/",
+  "goodGTF": "/data/cbsync/referencedata/annotations/homo_sapiens/ensembl/95/Homo_sapiens.GRCh38.95.gtf",
+  "refGTF": "/data/cbsync/referencedata/annotations/sus_scrofa/ensembl/86/Sus_scrofa.Sscrofa10.2.86.gtf",
+  "liftChain": "/data/cbsync/referencedata/annotations/homo_sapiens/ucsc/liftOver/hg38ToSusScr3.over.chain",
+  "liftMinMatch": 0.7,
+
+  "_comment_": "starsolo",
+  "StarsoloGenome": "/data/cbsync/referencedata/refgenomes_starsolo/refgenomes_ensembl86/sus_scrofa10.2.86/star2.7.1a",
+  "whitelist": "/data/cb_projects/user/shenyan/prog/scRNASeq_snakemake_pipeline/data/737K-august-2016.txt",
+  "CBLen": 16,
+  "UMIStart": 17,
+  "UMILen": 10
+
+}

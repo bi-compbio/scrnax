@@ -1,0 +1,25 @@
+{
+  "outputDir": "results/selfTest/piplineOutput/",
+  "countBy": "combined",
+  "bamDir": "resources/tests/bams/",
+  "fastqDir": "resources/tests/fastqs/",
+  "goodGTF": "resources/tests/Homo_sapiens.GRCh38.95.chr17.gtf",
+  "refGTF": "resources/tests/Sus_scrofa.Sscrofa10.2.86.chr12.gtf",
+  "liftChain": "resources/tests/hg38ToSusScr3.over.chain",
+  "liftMinMatch": 0.7,
+
+  "_comment_": "starsolo",
+  "StarsoloGenome": "resources/tests/Sscrofa10.2.chr12_star2.7.1a",
+  "whitelist": "resources/tests/737K-august-2016.txt",
+  "CBLen": 16,
+  "UMIStart": 17,
+  "UMILen": 10,
+  "STARArgs": {},
+  
+  "_comment_": "featureCount",
+  "numHit": 10000,
+  "featureCountArgs": {},
+  "featureCountToDTArgs": {},
+  "DTToH5Args": {}
+
+}
