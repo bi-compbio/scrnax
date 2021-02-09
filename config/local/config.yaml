@@ -3,4 +3,4 @@
 # one row per sample. It can be parsed easily via pandas.
 # report: "report.html"
 restart-times: 3
-local-cores: 4
+cores: 4

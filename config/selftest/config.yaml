@@ -2,6 +2,6 @@
 # In case of sample based data, it should be complemented by a samples.tsv file that contains
 # one row per sample. It can be parsed easily via pandas.
 config: "example=true"
-report: "reports/report.html"
+# report: "reports/report.html"
 restart-times: 3
-local-cores: 4
+cores: 4
