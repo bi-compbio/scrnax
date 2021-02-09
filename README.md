@@ -104,7 +104,6 @@ Please check if Singualrity is available:
 
 You need root permission to install singularity, please follow the [instructions on Singularity website](https://sylabs.io/guides/3.0/user-guide/installation.html).
 
-
 # Introduction
 
 ## Two approaches for improving gene annotation
