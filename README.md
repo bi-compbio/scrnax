@@ -68,24 +68,25 @@ Miniconda can be installed with user's account:
   conda config --add channels conda-forge
 ```
 
-* Git (2.22.0) and awscli (1.15.4)
+* Git (>=2.22.0)
 
 ```bash
-conda install -c conda-forge git=2.22.0 awscli=1.15.4
+conda install -c conda-forge git
 ```
 
- * Snakemake
+ * Snakemake (>=5.32.0)
 
 Install Snakemake using [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html):
 For installation details, see the [instructions in the Snakemake documentation](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html).
 
 ```bash
- conda install snakemake=5.32.0
+conda install snakemake
 ```
  
 ***Or the pipeline can be run via Singualrity.***
 
 * Singualrity
+
 Please check if Singualrity is available:
 
 ```bash
@@ -101,6 +102,11 @@ Please check if Singualrity is available:
                 ||     ||
 ```
 
+You can install singularity via conda, however, you might need root permission to install squashfs-tools.
+
+```bash
+conda install -c conda-forge singularity
+```
 
 # Introduction
 
@@ -133,6 +139,8 @@ The improvements on either total UMIs detected per sample![totalUMI](resources/i
 
 ```bash
   git -c http.sslVerify="false" -c http.proxy=  clone https://git.eu.boehringer.com/shenyan/scrnax.git
+  cd scrnax/resources/
+  tar xvfz tests.tar.gz
 ```
 ### Step 2: Configure workflow
 
