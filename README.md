@@ -102,11 +102,8 @@ Please check if Singualrity is available:
                 ||     ||
 ```
 
-You can install singularity via conda, however, you might need root permission to install squashfs-tools.
+You need root permission to install singularity, please follow the [instructions on Singularity website](https://sylabs.io/guides/3.0/user-guide/installation.html).
 
-```bash
-conda install -c conda-forge singularity
-```
 
 # Introduction
 
@@ -138,6 +135,8 @@ The improvements on either total UMIs detected per sample![totalUMI](resources/i
 2. [Clone](https://help.github.com/en/articles/cloning-a-repository) the newly created repository to your local system, into the place where you want to perform the data analysis.
 
 ```bash
+  mkdir ~/src/
+  cd ~/src/
   git -c http.sslVerify="false" -c http.proxy=  clone https://git.eu.boehringer.com/shenyan/scrnax.git
   cd scrnax/resources/
   tar xvfz tests.tar.gz
@@ -157,13 +156,14 @@ Configure the workflow according to your needs via editing the files in the `con
 Test your configuration by performing a dry-run via
 
 ```bash
-    snakemake --profile config/selftest/ --use-conda -n 
+  cd ~/src/scrnax/
+  snakemake --profile config/selftest/ --use-conda -n 
 ```
 
 Execute the workflow locally via
 
 ```bash
-    snakemake --profile config/selftest/ --use-conda --cores $N
+  snakemake --profile config/selftest/ --use-conda --cores $N
 ```
 
 using `$N` cores or run it in a HPC environment (slurm) via
@@ -275,17 +275,19 @@ If both the bam files of bulk RNA-Seq and the fastq files of scRNA-Seq are avail
 ```bash
 mkdir ~/src/
 cd ~/src/
-git -c http.sslVerify="false" -c http.proxy=  clone https://git.eu.boehringer.com/bibc_compbio/scrna.git
+git -c http.sslVerify="false" -c http.proxy=  clone https://git.eu.boehringer.com/bibc_compbio/scrnax.git
+cd scrnax/resources/
+tar xvfz tests.tar.gz
 ```
 
 * Step 2. Download the pig and human GTF from Ensembl, the chain file from UCSC:
 
 ```bash
 cd ~/src/scrnax/
-tar xvfz test.tar.gz
+# tar xvfz test.tar.gz
 mkdir gtfs
 cd gtfs
-wget -c http://ftp.ensemblorg.ebi.ac.uk/pub/release-97/gtf/homo_sapiens/Homo_sapiens.GRCh38.97.gtf.gz
+wget -c http://ftp.ensembl.org/pub/release-97/gtf/homo_sapiens/Homo_sapiens.GRCh38.97.gtf.gz
 wget -c http://ftp.ensembl.org/pub/release-97/gtf/sus_scrofa_usmarc/Sus_scrofa_usmarc.USMARCv1.0.97.gtf.gz
 gzip -d *.gz
 
@@ -355,13 +357,13 @@ Or it can be provided as an additional parameter: bamDir
 
 ```bash
 cd ~/src/scrnax/
-snakemake --use-singularity --use-conda --profile config/local/ --configfile conf.json --config bamDir=test/bams/
+snakemake --use-singularity --use-conda --profile config/local/ --configfile conf.json --config bamDir=resources/tests/bams/
 ```
 
 Alternativly, the pipeline can be run on HPC cluster:
 
 ```bash
-snakemake --use-singularity --use-conda --profile config/slurm/ --configfile conf.json --config bamDir=test/bams/
+snakemake --use-singularity --use-conda --profile config/slurm/ --configfile conf.json --config bamDir=resources/tests/bams/
 ```
 
 Now the `combined.fixed.gtf` and `denovo/fixed.gtf` should be updated/added in the result folder.
@@ -390,8 +392,8 @@ cat <<EOT >conf.fastq.json
   "liftMinMatch": 0.7,
   
   "_comment_": "starsolo",
-  "StarsoloGenome": "/data/cbsync/referencedata/refgenomes_starsolo/refgenomes_ensembl86/sus_scrofa10.2.86/star2.7.1a",
-  "whitelist": "/data/cb_projects/user/shenyan/prog/scRNASeq_snakemake_pipeline/data/737K-august-2016.txt",
+  "StarsoloGenome": "resources/tests/Sscrofa10.2.chr12_star2.7.1a/",
+  "whitelist": "resources/tests/737K-august-2016.txt",
   "CBLen": 16,
   "UMIStart": 17,
   "UMILen": 10
@@ -402,25 +404,25 @@ EOT
 ### Quantification with combined GTF:
 
 ```bash
-snakemake --use-singularity --singularity-args "-B /data" --use-conda --profile config/local/ --configfile conf.json  --config bamDir=test/bams/ fastqDir=test/fastqs/ countBy=combined
+snakemake --use-singularity --use-conda --profile config/local/ --configfile conf.fastq.json  --config bamDir=resources/tests/bams/ fastqDir=resources/tests/fastqs/ countBy=combined
 ```
 
 ### Quantification with ortholog GTF:
 
 ```bash
-snakemake --use-singularity --singularity-args "-B /data" --use-conda --profile config/local/ --configfile conf.json  --config bamDir=test/bams/ fastqDir=test/fastqs/ countBy=ortholog
+snakemake --use-singularity --use-conda --profile config/local/ --configfile conf.fastq.json  --config bamDir=resources/tests/bams/ fastqDir=resources/tests/fastqs/ countBy=ortholog
 ```
 
 ### Quantification with denovo assembled GTF:
 
 ```bash
-snakemake --use-singularity --singularity-args "-B /data" --use-conda --profile config/local/ --configfile conf.json  --config bamDir=test/bams/ fastqDir=test/fastqs/ countBy=denovo
+snakemake --use-singularity --use-conda --profile config/local/ --configfile conf.fastq.json  --config bamDir=resources/tests/bams/ fastqDir=resources/tests/fastqs/ countBy=denovo
 ```
 
 ### Command for submitting the jobs to HPC cluster
 
 ```bash
-snakemake --use-singularity --singularity-args "-B /data" --use-conda --profile config/slurm/ --configfile conf.json  --config bamDir=test/bams/ fastqDir=test/fastqs/ countBy=combined
+snakemake --use-singularity --use-conda --profile config/slurm/ --configfile conf.json  --config bamDir=resources/tests/bams/ fastqDir=resources/tests/fastqs/ countBy=combined
 ```
 
 The gene count matrix (h5 format) will be stored in subfolder of featureCount folder.
