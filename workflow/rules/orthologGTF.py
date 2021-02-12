@@ -26,7 +26,8 @@ rule mapUTR:
     mapGtfPos = config["outputDir"] + "ortholog/" + "mapUTR.pos.gtf",
     mapGtfNeg = config["outputDir"] + "ortholog/" + "mapUTR.neg.gtf"
   params:
-    minMatch = config['liftMinMatch']
+    minMatch = config['liftMinMatch'],
+    rtracklayer = srcdir("../scripts/rtracklayer.R")
   threads: 16
   conda: 
     "../envs/refineUTR.yaml"
@@ -34,7 +35,8 @@ rule mapUTR:
     mem_mb=lambda wildcards, attempt: attempt * 30000
   shell:
     """
-      liftOver -gff -minMatch={params.minMatch} {input.utrgtf} {input.liftChain} {output.tmpMapGtf} unmap.bed
+      # liftOver -gff -minMatch={params.minMatch} {input.utrgtf} {input.liftChain} {output.tmpMapGtf} unmap.bed
+      Rscript {params.rtracklayer} {input.utrgtf} {input.liftChain} {output.tmpMapGtf}
       # fix short exons
       mawk 'BEGIN{{FS="\\t";OFS="\\t"}}{{if($5-$4 > 50 && $7 == "+") {{if($1 ~ /^chr/) $1 = substr($1, 4, length($1)); print $0; $3 = "transcript"; print $0;}}}}' {output.tmpMapGtf} >  {output.mapGtfPos}
       mawk 'BEGIN{{FS="\\t";OFS="\\t"}}{{if($5-$4 > 50 && $7 == "-") {{if($1 ~ /^chr/) $1 = substr($1, 4, length($1)); print $0; $3 = "transcript"; print $0;}}}}' {output.tmpMapGtf} >  {output.mapGtfNeg}
