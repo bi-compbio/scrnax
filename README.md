@@ -136,7 +136,7 @@ The improvements on either total UMIs detected per sample![totalUMI](resources/i
 ```bash
   mkdir ~/src/
   cd ~/src/
-  git -c http.sslVerify="false" -c http.proxy=  clone https://git.eu.boehringer.com/shenyan/scrnax.git
+  git -c http.sslVerify="false" -c http.proxy=  clone https://github.com/bi-compbio/scrnax.git
   cd scrnax/resources/
   tar xvfz tests.tar.gz
 ```
